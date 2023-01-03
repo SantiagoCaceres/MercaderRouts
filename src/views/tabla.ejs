@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercader's Routs</title>
+    <link rel='stylesheet' href='../styles/tabla.css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    
+    <h1 class="tt">Albion Mercader's Routs</h1>
+
+        <table id="datatable">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Ppu</th>
+                    <th>Gain</th>
+                    <th>Gain %</th>
+                    <th>Rute</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+
+        </table>
+
+        <a href="/tabla"><button id="btn">Re-Load Data<span class="material-symbols-outlined">swords</span></button></a>
+        <div id='carga' class="snippet" data-title="dot-spin">
+          <div class="stage">
+            <div class="dot-spin"></div>
+
+
+    <script><%- include('../scripts/despliegue.js') %></script>
+
+    <script src="../scripts/tablefunct.js"></script>
+
+    <script>
+        const dt = new DataTable('#datatable',[
+            /*{
+                id:'bAdd',
+                text: 'agregar',
+                icon:'Add',
+                action: function(){
+                    //codigo de callback
+                }
+            }*/
+        ]);
+
+        dt.parse();
+
+        
+    </script>
+
+      
+<script>
+    carga.style.display = "none";
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', () => {
+        // 👇️ hide button
+        btn.style.display = 'none';
+        carga.style.display="block"
+    
+    });
+    
+const snippets = document.querySelectorAll('.snippet');
+
+for (let i = 0; i < snippets.length; i++) {
+  snippets[i].addEventListener('mouseleave', clearTooltip);
+  snippets[i].addEventListener('blur', clearTooltip);
+}
+
+function showTooltip(el, msg) {
+  el.setAttribute('class', 'snippet tooltip');
+  el.setAttribute('aria-label', msg);
+}
+
+function clearTooltip(e) {
+  e.currentTarget.setAttribute('class', 'snippet');
+  e.currentTarget.removeAttribute('aria-label');
+}
+
+const clipboardSnippets = new ClipboardJS('.snippet', {
+  text: trigger => trigger.getAttribute('data-title')
+});
+
+clipboardSnippets.on('success', e => {
+  e.clearSelection();
+  showTooltip(e.trigger, 'Copied!');
+});
+
+clipboardSnippets.on('error', e => {
+  showTooltip(e.trigger, 'Copy failed!');
+});
+    
+    </script>
+</body>
+</html>

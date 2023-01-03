@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercader's Routs</title>
+    <link rel='stylesheet' href='../styles/index.css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    
+<h1>Albion Mercader's Routs</h1>
+
+
+<a id="lin" href="/tabla"><button id="btn">Load Data<span class="material-symbols-outlined">swords</span></button></a>
+
+
+<div id='carga' class="snippet" data-title="dot-spin">
+  <div class="stage">
+    <div class="dot-spin"></div>
+<script>
+    carga.style.display = "none";
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', () => {
+        // 👇️ hide button
+        btn.style.display = 'none';
+        carga.style.display="block"
+    
+    });
+    
+const snippets = document.querySelectorAll('.snippet');
+
+for (let i = 0; i < snippets.length; i++) {
+  snippets[i].addEventListener('mouseleave', clearTooltip);
+  snippets[i].addEventListener('blur', clearTooltip);
+}
+
+function showTooltip(el, msg) {
+  el.setAttribute('class', 'snippet tooltip');
+  el.setAttribute('aria-label', msg);
+}
+
+function clearTooltip(e) {
+  e.currentTarget.setAttribute('class', 'snippet');
+  e.currentTarget.removeAttribute('aria-label');
+}
+
+const clipboardSnippets = new ClipboardJS('.snippet', {
+  text: trigger => trigger.getAttribute('data-title')
+});
+
+clipboardSnippets.on('success', e => {
+  e.clearSelection();
+  showTooltip(e.trigger, 'Copied!');
+});
+
+clipboardSnippets.on('error', e => {
+  showTooltip(e.trigger, 'Copy failed!');
+});
+    
+    
+</script>
+</body>
+</html>
