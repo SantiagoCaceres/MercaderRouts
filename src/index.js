@@ -3,7 +3,7 @@ const path=require('path')
 const morgan=require('morgan')
 
 const router =require('./routes/index.js')
-require('events').EventEmitter.prototype._maxListeners = 100;
+
 const port=process.env.PORT || 3000;
 const indexRoutes=router
 const app = express()
