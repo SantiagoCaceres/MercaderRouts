@@ -76,7 +76,7 @@ var datos= (async ()=>{
             width: 1200,
             height: 600
         },
-        args: ['window-size=1200, 1080']
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
    
